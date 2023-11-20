@@ -21,7 +21,8 @@ public enum CommandType {
         this.uid = uid;
     }
 
-    public String getUrl(){
+    public String getUid(){
         return uid;
     }
+
 }

@@ -19,7 +19,8 @@ public abstract class ACommand {
             Map<Integer, TemporarySymbol> symbols,
             Map<Integer, String> reversedSymbolMap
     ){
-        return symbols.get(reversedSymbolMap.get(token.getAddress())).getPlaceHolder();
+
+        return symbols.get(token.getAddress()).getPlaceHolder();
     }
 
     public String getLine(Map<Integer, String> reversedSymbolMap) {

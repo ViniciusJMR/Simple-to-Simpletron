@@ -33,9 +33,9 @@ public class TemporarySymbol {
         if (token.getType() == Symbol.INTEGER){
             var symbol = reversedSymbolMap.get(token.getAddress());
             if(previousToken.getType() == Symbol.SUBTRACT) {
-                return String.format("-%04d", symbol);
+                return String.format("-%04d", Integer.parseInt(symbol));
             }
-            return String.format("+%04d", symbol);
+            return String.format("+%04d", Integer.parseInt(symbol));
 
         } else {
             return "+0000";

@@ -15,8 +15,10 @@
  * OpenJDK 64-Bit Server VM (build 25.121-b13, mixed mode)               *
  *************************************************************************/
 
+import intermediatecode.IntermediateCodeGenerator;
 import lexical.LexicalAnalysis;
 import core.Token;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -25,17 +27,14 @@ import java.io.FileReader;
  * Classe responsavel pelo compilador da linguagem de programacao
  * SIMPLE 15.01
  */
-public class Compiler
-{
+public class Compiler {
     /**
      * Metodo principal da linguagem de programacao Java
      *
      * @param args argumentos da linha de comando (nao utilizado)
      */
-    public static void main(String[] args)
-    {
-        if (args.length != 1)
-        {
+    public static void main(String[] args) {
+        if (args.length != 1) {
             System.err.println("Por favor, informe o arquivo a ser compilado!");
 
             return;
@@ -43,12 +42,9 @@ public class Compiler
 
         BufferedReader source = null;
 
-        try
-        {
+        try {
             source = new BufferedReader(new FileReader(new File(args[0])));
-        }
-        catch (final Exception exception)
-        {
+        } catch (final Exception exception) {
             exception.printStackTrace();
         }
 
@@ -56,18 +52,20 @@ public class Compiler
 
         final LexicalAnalysis lexical = new LexicalAnalysis();
 
-        if (!lexical.parser(source))
-        {
-            for (String key: lexical.getSymbolTable().keySet())
-            {
+        if (!lexical.parser(source)) {
+            for (String key : lexical.getSymbolTable().keySet()) {
                 System.out.println(lexical.getSymbolTable().get(key) + " : " + key);
             }
 
-            for (Token token: lexical.getTokens())
-            {
+            for (Token token : lexical.getTokens()) {
                 System.out.println(token);
             }
             System.out.println("Fim da análise léxica");
-            }
         }
+
+        var intermediateCode = new IntermediateCodeGenerator(lexical.getTokens(), lexical.getSymbolTable());
+        intermediateCode.analyze();
+        var code = intermediateCode.getCode();
+        System.out.println(code);
+    }
 }
