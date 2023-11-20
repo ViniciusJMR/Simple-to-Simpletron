@@ -20,7 +20,7 @@ public class GoTo extends ACommand {
     @Override
     public String getCodeLines(int index, Map<Integer, TemporarySymbol> symbols, Map<Integer, String> reversedSymbolMap) {
         placeholder = MARKER + index + MARKER;
-        return CommandType.BRANCH + placeholder;
+        return CommandType.BRANCH.getUid() + placeholder;
     }
 
     public int getTargetLine(Map<Integer, String> reversedSymbolMap) {

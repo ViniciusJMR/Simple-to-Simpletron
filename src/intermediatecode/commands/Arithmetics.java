@@ -40,8 +40,8 @@ public class Arithmetics extends ACommand {
                 Token targetVariableT = tProcess.get(0);
                 Token aVariableT = tProcess.get(1);
 
-                code = CommandType.LOAD + ACommand.getPlaceholder(aVariableT, symbols, reversedSymbolMap) + "\n";
-                code += CommandType.STORE + ACommand.getPlaceholder(targetVariableT, symbols, reversedSymbolMap);
+                code = CommandType.LOAD.getUid() + ACommand.getPlaceholder(aVariableT, symbols, reversedSymbolMap) + "\n";
+                code += CommandType.STORE.getUid() + ACommand.getPlaceholder(targetVariableT, symbols, reversedSymbolMap);
                 System.out.println(code);
                 break;
             }
@@ -49,8 +49,8 @@ public class Arithmetics extends ACommand {
                 Token targetVariableT = tProcess.get(0);
                 Token aVariableT = tProcess.get(2);
 
-                code = CommandType.LOAD + ACommand.getPlaceholder(aVariableT, symbols, reversedSymbolMap) + "\n";
-                code += CommandType.STORE + ACommand.getPlaceholder(targetVariableT, symbols, reversedSymbolMap);
+                code = CommandType.LOAD.getUid() + ACommand.getPlaceholder(aVariableT, symbols, reversedSymbolMap) + "\n";
+                code += CommandType.STORE.getUid() + ACommand.getPlaceholder(targetVariableT, symbols, reversedSymbolMap);
                 System.out.println(code);
                 break;
             }
@@ -61,27 +61,27 @@ public class Arithmetics extends ACommand {
                 Token bVariableT = tProcess.get(3);
 
                 String bVariablePlaceholder = ACommand.getPlaceholder(bVariableT, symbols, reversedSymbolMap);
-                code = CommandType.LOAD + ACommand.getPlaceholder(aVariableT, symbols, reversedSymbolMap) + "\n";
+                code = CommandType.LOAD.getUid() + ACommand.getPlaceholder(aVariableT, symbols, reversedSymbolMap) + "\n";
 
                 switch (operationT.getType()) {
                     case DIVIDE:
-                        code += CommandType.DIVIDE + bVariablePlaceholder;
+                        code += CommandType.DIVIDE.getUid() + bVariablePlaceholder;
                         break;
                     case ADD:
-                        code += CommandType.ADD + bVariablePlaceholder;
+                        code += CommandType.ADD.getUid() + bVariablePlaceholder;
                         break;
                     case SUBTRACT:
-                        code += CommandType.SUBTRACT + bVariablePlaceholder;
+                        code += CommandType.SUBTRACT.getUid() + bVariablePlaceholder;
                         break;
                     case MULTIPLY:
-                        code += CommandType.MULTIPLY + bVariablePlaceholder;
+                        code += CommandType.MULTIPLY.getUid() + bVariablePlaceholder;
                         break;
                     case MODULO:
-                        code += CommandType.MODULE + bVariablePlaceholder;
+                        code += CommandType.MODULE.getUid() + bVariablePlaceholder;
                         break;
                 }
 
-                code += "\n" + CommandType.STORE + ACommand.getPlaceholder(targetVariableT, symbols, reversedSymbolMap);
+                code += "\n" + CommandType.STORE.getUid() + ACommand.getPlaceholder(targetVariableT, symbols, reversedSymbolMap);
                 System.out.println(code);
                 break;
             }

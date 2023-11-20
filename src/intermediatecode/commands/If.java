@@ -32,37 +32,37 @@ public class If extends ACommand {
 
         switch (relationalOp.getType()){
             case EQ -> {
-                code.append(CommandType.LOAD).append(firstValueHolder).append("\n")
-                    .append(CommandType.SUBTRACT).append(secondValueHolder).append("\n")
-                    .append(CommandType.BRANCH_ZERO).append(placeholder);
+                code.append(CommandType.LOAD.getUid()).append(firstValueHolder).append("\n")
+                    .append(CommandType.SUBTRACT.getUid()).append(secondValueHolder).append("\n")
+                    .append(CommandType.BRANCH_ZERO.getUid()).append(placeholder);
             }
             case NE-> {
-                code.append(CommandType.LOAD).append(firstValueHolder).append("\n")
-                        .append(CommandType.SUBTRACT).append(secondValueHolder).append("\n")
-                        .append(CommandType.BRANCH_ZERO).append(placeholder).append("\n")
-                        .append(CommandType.BRANCH).append(placeholder);
+                code.append(CommandType.LOAD.getUid()).append(firstValueHolder).append("\n")
+                        .append(CommandType.SUBTRACT.getUid()).append(secondValueHolder).append("\n")
+                        .append(CommandType.BRANCH_ZERO.getUid()).append(placeholder).append("\n")
+                        .append(CommandType.BRANCH.getUid()).append(placeholder);
             }
             case LT -> {
-                code.append(CommandType.LOAD).append(firstValueHolder).append("\n")
-                        .append(CommandType.SUBTRACT).append(secondValueHolder).append("\n")
-                        .append(CommandType.BRANCH_NEG).append(placeholder);
+                code.append(CommandType.LOAD.getUid()).append(firstValueHolder).append("\n")
+                        .append(CommandType.SUBTRACT.getUid()).append(secondValueHolder).append("\n")
+                        .append(CommandType.BRANCH_NEG.getUid()).append(placeholder);
             }
             case GT -> {
-                code.append(CommandType.LOAD).append(secondValueHolder).append("\n")
-                        .append(CommandType.SUBTRACT).append(firstValueHolder).append("\n")
-                        .append(CommandType.BRANCH_NEG).append(placeholder);
+                code.append(CommandType.LOAD.getUid()).append(secondValueHolder).append("\n")
+                        .append(CommandType.SUBTRACT.getUid()).append(firstValueHolder).append("\n")
+                        .append(CommandType.BRANCH_NEG.getUid()).append(placeholder);
             }
             case GE -> {
-                code.append(CommandType.LOAD).append(secondValueHolder).append("\n")
-                        .append(CommandType.SUBTRACT).append(firstValueHolder).append("\n")
-                        .append(CommandType.BRANCH_NEG).append(placeholder).append("\n")
-                        .append(CommandType.BRANCH).append(placeholder);
+                code.append(CommandType.LOAD.getUid()).append(secondValueHolder).append("\n")
+                        .append(CommandType.SUBTRACT.getUid()).append(firstValueHolder).append("\n")
+                        .append(CommandType.BRANCH_NEG.getUid()).append(placeholder).append("\n")
+                        .append(CommandType.BRANCH.getUid()).append(placeholder);
             }
             case LE -> {
-                code.append(CommandType.LOAD).append(firstValueHolder).append("\n")
-                        .append(CommandType.SUBTRACT).append(secondValueHolder).append("\n")
-                        .append(CommandType.BRANCH_NEG).append(placeholder).append("\n")
-                        .append(CommandType.BRANCH).append(placeholder);
+                code.append(CommandType.LOAD.getUid()).append(firstValueHolder).append("\n")
+                        .append(CommandType.SUBTRACT.getUid()).append(secondValueHolder).append("\n")
+                        .append(CommandType.BRANCH_NEG.getUid()).append(placeholder).append("\n")
+                        .append(CommandType.BRANCH.getUid()).append(placeholder);
 
             }
         }
