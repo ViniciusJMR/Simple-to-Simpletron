@@ -33,8 +33,8 @@ public class If extends ACommand {
         switch (relationalOp.getType()){
             case EQ -> {
                 code.append(CommandType.LOAD.getUid()).append(firstValueHolder).append("\n")
-                    .append(CommandType.SUBTRACT.getUid()).append(secondValueHolder).append("\n")
-                    .append(CommandType.BRANCH_ZERO.getUid()).append(placeholder);
+                        .append(CommandType.SUBTRACT.getUid()).append(secondValueHolder).append("\n")
+                        .append(CommandType.BRANCH_ZERO.getUid()).append(placeholder);
             }
             case NE-> {
                 code.append(CommandType.LOAD.getUid()).append(firstValueHolder).append("\n")

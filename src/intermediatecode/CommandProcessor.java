@@ -47,15 +47,18 @@ public class CommandProcessor {
 //                        }
 //                        String command = p.substring(1, 3);
 //                        String variable = p.substring(3);
-//                        String commandName = CommandType.getName(command);
+//                        String commandName = CommandType(command);
 //                        int lineNumber = counter.incrementAndGet();
 //
 //                        if (!command.equals("00")) {
 //                            String memoryType = "VARIABLE";
-//                            if (CommandType.BRANCH_NEG.contains(command) || CommandType.BRANCH.contains(command) || CommandType.BRANCH_ZERO.contains(command)) {
+//                            if (CommandType.BRANCH_NEG.toString().contains(command)
+//                                    || CommandType.BRANCH.toString().contains(command)
+//                                    || CommandType.BRANCH_ZERO.toString().contains(command)
+//                            ) {
 //                                memoryType = " GT LINE";
 //                            }
-//                            if (CommandType.HALT.contains(command)) {
+//                            if (CommandType.HALT.toString().contains(command)) {
 //                                return p + "    #" + (lineNumber < 10 ? "0" + lineNumber : lineNumber) + " - COMMAND: " + commandName;
 //                            }
 //                            return p + "    #" + (lineNumber < 10 ? "0" + lineNumber : lineNumber) + " - COMMAND: " + String.format("%1$-11s", commandName) + " - " + memoryType + ": " + variable;
@@ -72,8 +75,7 @@ public class CommandProcessor {
         List<TemporarySymbol> symbolsToDeclare = new ArrayList<>(symbols.symbols.values());
         int index = code.split("\n").length;
         for (TemporarySymbol symbol : symbolsToDeclare) {
-            code += symbol.getDeclaration(reversedSymbolMap, index) + "\n";
-            index++;
+            code += symbol.getDeclaration(reversedSymbolMap, ++index) + "\n";
         }
 
         for (TemporarySymbol symbol : symbolsToDeclare) {

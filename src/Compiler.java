@@ -19,9 +19,7 @@ import intermediatecode.IntermediateCodeGenerator;
 import lexical.LexicalAnalysis;
 import core.Token;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 /**
  * Classe responsavel pelo compilador da linguagem de programacao
@@ -33,7 +31,7 @@ public class Compiler {
      *
      * @param args argumentos da linha de comando (nao utilizado)
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
         if (args.length != 1) {
             System.err.println("Por favor, informe o arquivo a ser compilado!");
 
@@ -64,8 +62,15 @@ public class Compiler {
         }
 
         var intermediateCode = new IntermediateCodeGenerator(lexical.getTokens(), lexical.getSymbolTable());
+
         intermediateCode.analyze();
         var code = intermediateCode.getCode();
         System.out.println(code);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("simpletron.txt"));){
+            writer.write(code);
+        } catch (IOException e) {
+            System.err.println("Erro ao criar arquivo!");
+        }
+
     }
 }
